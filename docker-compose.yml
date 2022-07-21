@@ -1,6 +1,18 @@
-version: '8.0'
+version: '3.7'
 services:
   mysql:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: mysql
+    restart: always
+    ports:
+      - 3306.3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "PedroAtos2021"
+      MYSQL_DATABASE: "db_dockersql"
+
+
     container_name: mysql
     image: mysql:latest
     volumes: 
