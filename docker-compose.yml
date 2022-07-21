@@ -9,11 +9,17 @@ services:
     ports:
       - 3306.3306
     environment:
-      MYSQL_ROOT_PASSWORD: "PedroAtos2021"
-      MYSQL_DATABASE: "db_dockersql"
-
-
-    container_name: mysql
-    image: mysql:latest
+      MYSQL_ROOT_PASSWORD: "PedroAtos2021"      
     volumes: 
-      - ./
+      - ./schemas:/var/lib/mysql:rw
+    networks:
+      mysql_network:
+        aliases: 
+         - mysql_host
+volumes:
+  schemas: {}
+networks:
+  mysql_network:
+    name: mysql_net
+    driver: bridge
+
